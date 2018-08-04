@@ -233,11 +233,23 @@ packages = [
 <script>
 function update()
 {
+    let json = document.getElementById('JSON').value;
     try {
-        document.getElementById('thindf').value = exports.stringify(JSON.parse(document.getElementById('JSON').value));
+        document.getElementById('thindf').value = exports.stringify(JSON.parse(json));
     }
     catch (e) {
-        document.getElementById('thindf').value = e.message;
+        let m = e.message.match(/ at position (\d+)/), msg;
+        if (m == null)
+            msg = e.message;
+        else {
+            let pos = Number(m[1]);
+            let next_line_pos = json.indexOf("\n", pos);
+            if (next_line_pos == -1)
+                next_line_pos = json.length;
+            let prev_line_pos = json.lastIndexOf("\n", pos) + 1;
+            msg = json.slice(0, next_line_pos) + "\n" + '-'.repeat(pos - prev_line_pos) + '^' + e.message.replace(/ at position \d+/, '') + json.slice(next_line_pos);
+        }
+        document.getElementById('thindf').value = msg;
     }
 }
 var exports = {};
