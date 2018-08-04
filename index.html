@@ -246,8 +246,8 @@ function update()
             let next_line_pos = json.indexOf("\n", pos);
             if (next_line_pos == -1)
                 next_line_pos = json.length;
-            let prev_line_pos = json.lastIndexOf("\n", pos) + 1;
-            msg = json.slice(0, next_line_pos) + "\n" + '-'.repeat(pos - prev_line_pos) + '^' + e.message.replace(/ at position \d+/, '') + json.slice(next_line_pos);
+            let prev_line_pos = json.lastIndexOf("\n", pos - 1) + 1;
+            msg = json.slice(0, next_line_pos) + "\n" + '-'.repeat(pos - prev_line_pos) + '^' + JSON.stringify(e.message.replace(/ at position \d+/, '')).slice(1, -1) + json.slice(next_line_pos);
         }
         document.getElementById('thindf').value = msg;
     }
