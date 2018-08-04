@@ -143,6 +143,27 @@ packages = [
 
 
 ’’’
+‘‘'‘
+<script>
+function update()
+{
+    try {
+        document.getElementById('thindf').value = exports.stringify(JSON.parse(document.getElementById('JSON').value));
+    }
+    catch (e) {
+        document.getElementById('thindf').value = e.message;
+    }
+}
+var exports = {};
+</script>
+<script src="https://bbcdn.githack.com/thindf/thindf/raw/default/thindf.js"></script>
+<textarea id="JSON" oninput="update()" style="font-family: 'Courier New'; width: 100%; height: 300px">Попробуйте сами!
+(Просто введите JSON в это текстовое поле и сразу же получите результат в формате thindf в правой колонке.)</textarea>
+’'
+’‘'‘
+<textarea id="thindf" style="font-family: 'Courier New'; width: 100%; height: 300px" readonly></textarea>
+’'
+’’
 ’
 
 
