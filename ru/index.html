@@ -121,7 +121,7 @@ personal
     "added_words":
     [
         "plugin",
-        "habrahabr",
+        "habrahabr"
     ],
     "font_size": 11
 }
@@ -235,7 +235,7 @@ function update()
 {
     let json = document.getElementById('JSON').value;
     try {
-        document.getElementById('thindf').value = exports.stringify(JSON.parse(json));
+        document.getElementById('thindf').value = exports.to_thindf(JSON.parse(json));
     }
     catch (e) {
         let m = e.message.match(/ at position (\d+)/), msg;
@@ -254,7 +254,7 @@ function update()
 }
 var exports = {};
 </script>
-<script src="https://bbcdn.githack.com/thindf/thindf/raw/default/thindf.js"></script>
+<script src="https://bb.githack.com/thindf/thindf/raw/default/thindf.js"></script>
 <textarea id="JSON" oninput="update()" style="font-family: 'Courier New'; width: 100%; height: 300px">Попробуйте сами!
 (Просто введите JSON в это текстовое поле и сразу же получите результат в формате thindf в правой колонке.)</textarea>
 <br />
