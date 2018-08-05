@@ -179,8 +179,9 @@ var exports = {};
 ’
 
 
-Reference implementation in Python:
+Reference implementation in Python and JavaScript:
 . ‘Project thindf at the Python Package Index’[https://pypi.org/project/thindf/]
+. ‘Node.js Package’[https://npmjs.com/package/thindf]
 . ‘Link to the main repository’[https://bitbucket.org/thindf/thindf]
 
 

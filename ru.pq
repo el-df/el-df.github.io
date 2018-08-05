@@ -179,8 +179,9 @@ var exports = {};
 ’
 
 
-[[[Базовая/]Оригинальная[/Авторская] ]]Реализация на языке Python:
+[[[Базовая/]Оригинальная[/Авторская] ]]Реализация на языках Python и JavaScript:
 . ‘Страница проекта thindf в Python Package Index’[https://pypi.org/project/thindf/]
+. ‘Node.js Package’[https://npmjs.com/package/thindf]
 . ‘Ссылка на основной репозиторий’[https://bitbucket.org/thindf/thindf]
 
 
