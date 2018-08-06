@@ -186,7 +186,7 @@ Reference implementation in Python and JavaScript:
 
 
 Articles on thindf:
-. ‘Article on habr.com (in Russian) titled ‘‘thindf — новый текстовый формат данных (альтернатива JSON)’’’[--]
+. ‘Article on habr.com (in Russian) titled ‘‘thindf — новый текстовый формат данных (альтернатива JSON)’’’[https://habr.com/post/419361/]
 
 
 
