@@ -145,6 +145,15 @@ packages = [
 ’’’
 ‘‘'‘
 <script>
+function form_error_message(source, pos, message)
+{
+    let next_line_pos = source.indexOf("\n", pos);
+    if (next_line_pos == -1)
+        next_line_pos = source.length;
+    let prev_line_pos = source.lastIndexOf("\n", pos - 1) + 1;
+    return source.slice(0, next_line_pos) + "\n" + '-'.repeat(pos - prev_line_pos) + '^' + message + source.slice(next_line_pos);
+}
+
 function update()
 {
     let json = document.getElementById('JSON').value;
@@ -154,26 +163,39 @@ function update()
     catch (e) {
         let m = e.message.match(/ at position (\d+)/), msg;
         if (m == null)
-            msg = e.message;
-        else {
-            let pos = Number(m[1]);
-            let next_line_pos = json.indexOf("\n", pos);
-            if (next_line_pos == -1)
-                next_line_pos = json.length;
-            let prev_line_pos = json.lastIndexOf("\n", pos - 1) + 1;
-            msg = json.slice(0, next_line_pos) + "\n" + '-'.repeat(pos - prev_line_pos) + '^' + JSON.stringify(e.message.replace(/ at position \d+/, '')).slice(1, -1) + json.slice(next_line_pos);
-        }
+            msg = 'Error: ' + e.message;
+        else
+            msg = form_error_message(json, Number(m[1]), JSON.stringify(e.message.replace(/ at position \d+/, '')).slice(1, -1));
         document.getElementById('thindf').value = msg;
     }
 }
 var exports = {};
 </script>
-<script src="https://bb.githack.com/thindf/thindf/raw/default/thindf.js"></script>
+<script src="../thindf.js"></script>
 <textarea id="JSON" oninput="update()" style="font-family: 'Courier New'; width: 100%; height: 300px">Попробуйте сами!
 (Просто введите JSON в это текстовое поле и сразу же получите результат в формате thindf в правой колонке.)</textarea>
 ’'
 ’‘'‘
 <textarea id="thindf" style="font-family: 'Courier New'; width: 100%; height: 300px" readonly></textarea>
+’'
+’’
+‘‘'‘
+<script>
+function update2()
+{
+    let thindf = document.getElementById('thindf2').value;
+    try {
+        document.getElementById('JSON2').value = JSON.stringify(exports.parse(thindf), null, 4);
+    }
+    catch (e) {
+        document.getElementById('JSON2').value = form_error_message(thindf, e.pos, 'Error: ' + e.message);
+    }
+}
+</script>
+<textarea id="JSON2" style="font-family: 'Courier New'; width: 100%; height: 300px" readonly></textarea>
+’'
+’‘'‘
+<textarea id="thindf2" oninput="update2()" style="font-family: 'Courier New'; width: 100%; height: 300px">Или введите thindf здесь, чтобы получить соответствующий JSON в левой колонке.</textarea>
 ’'
 ’’
 ’
