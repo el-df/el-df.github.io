@@ -30,7 +30,7 @@ exports.to_thindf = function to_thindf(obj, indent = 4, level = 0, toplevel = tr
         console.assert(typeof(v) == 'string');
         if (v.length < 100 && v.includes("\n"))
             return JSON.stringify(v);
-        if (v == '' || " \t[{".includes(v[0]) || v.slice(0, 2) == '. ' || " \t".includes(v.slice(-1)) || v.includes('‘') || v.includes('’') || v.includes("\n") || v =='N' || v == 'Н' // }]
+        if (v == '' || " \t[{'".includes(v[0]) || v.slice(0, 2) == '. ' || " \t".includes(v.slice(-1)) || v.includes('‘') || v.includes('’') || v.includes("\n") || v =='N' || v == 'Н' // }]
                 || (additional_prohibited_character && v.includes(additional_prohibited_character)) || (v[0] >= '0' && v[0] <= '9') || (v[0] == '-' && v.slice(1, 2) >= '0' && v.slice(1, 2) <= '9'))
             return balance_pq_string(v);
         return v;
