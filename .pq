@@ -204,7 +204,7 @@ function update2()
 Reference implementation in Python and JavaScript:
 . ‘Project thindf at the Python Package Index’[https://pypi.org/project/thindf/]
 . ‘Node.js Package’[https://npmjs.com/package/thindf]
-. ‘Link to the main repository’[https://bitbucket.org/thindf/thindf]
+. ‘Link to the main repository’[https://sourceforge.net/p/thindf/code/ <- https://bitbucket.org/thindf/thindf]
 
 
 Articles on thindf:
