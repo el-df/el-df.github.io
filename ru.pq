@@ -2,7 +2,7 @@
 
 
 
-thindf — это "тонкий" формат данных (thin data format), альтернатива JSON[https://ru.wikipedia.org/wiki/JSON].
+thindf — это "тонкий" формат данных (thin data format), альтернатива JSON[https://ru.wikipedia.org/wiki/JSON ‘a very common data format’].
 
 
 Примеры:

@@ -2,7 +2,7 @@
 
 
 
-thindf is a thin data format, an alternative to JSON[https://en.wikipedia.org/wiki/JSON].
+thindf is a thin data format, an alternative to JSON[https://en.wikipedia.org/wiki/JSON ‘a very common data format’].
 
 
 Examples:
