@@ -24,13 +24,13 @@ exports.to_thindf = function to_thindf(obj, indent = 4, level = 0, toplevel = tr
         if (typeof(v) == 'number')
             return v.toString();
         if (typeof(v) == 'boolean')
-            return ({true:'1B', false:'0B'})[v];
+            return v ? '1B' : '0B';
         if (v == null)
             return 'N';
         console.assert(typeof(v) == 'string');
         if (v.length < 100 && v.includes("\n"))
             return JSON.stringify(v);
-        if (v == '' || " \t[{'".includes(v[0]) || v.slice(0, 2) == '. ' || " \t".includes(v.slice(-1)) || v.includes('‘') || v.includes('’') || v.includes("\n") || v =='N' || v == 'Н' // }]
+        if (v == '' || " \t[{'".includes(v[0]) || v.slice(0, 2) == '. ' || " \t".includes(v.slice(-1)) || v.includes('‘') || v.includes('’') || v.includes(';') || v.includes("\n") || v =='N' || v == 'Н' // }]
                 || (additional_prohibited_character && v.includes(additional_prohibited_character)) || (v[0] >= '0' && v[0] <= '9') || (v[0] == '-' && v.slice(1, 2) >= '0' && v.slice(1, 2) <= '9'))
             return balance_pq_string(v);
         return v;
@@ -133,7 +133,7 @@ exports.parse = function (s)
         }
     }
 
-    function from_str(stop_characters = '')
+    function from_str(stop_characters)
     {
         const start = i;
         if (s[i] == '"') {
@@ -272,7 +272,15 @@ exports.parse = function (s)
             obj_stack[obj_stack.length-1].push(new_dict);
             obj_stack.push(new_dict);
         }
+
         const prev_indentation_level = indentation_levels.length ? indentation_levels[indentation_levels.length-1] : 0;
+
+        if (s[i] == ';') {
+            for (i++; i < s.length && " \t".includes(s[i]); i++); // skip spaces after `;`
+            if (i == s.length) // end of source
+                break;
+            indentation_level = prev_indentation_level;
+        }
 
         if (expected_an_indented_block)
             if (!(indentation_level > prev_indentation_level))
@@ -366,7 +374,7 @@ exports.parse = function (s)
                     value = {};
                 }
                 else
-                    value = from_str();
+                    value = from_str(';');
                 if (!(obj_stack[obj_stack.length-1] instanceof Object && !(obj_stack[obj_stack.length-1] instanceof Array)))
                     throw new ParseError('key/value pairs are allowed only inside dictionaries not lists', start);
                 obj_stack[obj_stack.length-1][key] = value;

@@ -143,6 +143,19 @@ packages = [
 
 
 ’’’
+‘‘#‘
+[
+    {"number": 0, "chapter": "Read Me First!"},
+    {"number": 1, "chapter": "How Names Work"},
+    ...
+]
+’’‘#‘
+[
+.   number = 0; chapter = Read Me First!
+.   number = 1; chapter = How Names Work
+    ...
+]
+’’’
 ‘‘'‘
 <script>
 function form_error_message(source, pos, message)
