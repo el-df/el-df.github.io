@@ -19,7 +19,7 @@ exports.to_thindf = function to_thindf(obj, indent = 4, level = 0, toplevel = tr
         return "'".repeat(-min_nesting_level) + "‘".repeat(-min_nesting_level) + "‘" + s + "’" + "’".repeat(nesting_level) + "'".repeat(nesting_level);
     }
 
-    function to_str(v, additional_prohibited_character = null)
+    function to_str(v, additional_prohibited_character = null, additional_prohibited_character2 = null)
     {
         if (typeof(v) == 'number')
             return v.toString();
@@ -30,8 +30,9 @@ exports.to_thindf = function to_thindf(obj, indent = 4, level = 0, toplevel = tr
         console.assert(typeof(v) == 'string');
         if (v.length < 100 && v.includes("\n"))
             return JSON.stringify(v);
-        if (v == '' || " \t[{'".includes(v[0]) || v.slice(0, 2) == '. ' || " \t".includes(v.slice(-1)) || v.includes('‘') || v.includes('’') || v.includes(';') || v.includes("\n") || v =='N' || v == 'Н' // }]
-                || (additional_prohibited_character && v.includes(additional_prohibited_character)) || (v[0] >= '0' && v[0] <= '9') || (v[0] == '-' && v.slice(1, 2) >= '0' && v.slice(1, 2) <= '9'))
+        if (v == '' || " \t['".includes(v[0]) || v.slice(0, 2) == '. ' || " \t".includes(v.slice(-1)) || v.includes('‘') || v.includes('’') || v.includes(';') || v.includes("\n") || v =='N' || v == 'Н' // ]
+                || (additional_prohibited_character && (v.includes(additional_prohibited_character) ||
+                  (additional_prohibited_character2 && v.includes(additional_prohibited_character2)))) || (v[0] >= '0' && v[0] <= '9') || (v[0] == '-' && v.slice(1, 2) >= '0' && v.slice(1, 2) <= '9'))
             return balance_pq_string(v);
         return v;
     }
@@ -67,7 +68,7 @@ exports.to_thindf = function to_thindf(obj, indent = 4, level = 0, toplevel = tr
                 }
             }
             else
-                r += ' '.repeat(indent * (level+1)) + to_str(value, '=') + "\n";
+                r += ' '.repeat(indent * (level+1)) + to_str(value, '=', '{') + "\n"; // }
         }
         if (toplevel)
             r += "]\n";
@@ -80,7 +81,7 @@ exports.to_thindf = function to_thindf(obj, indent = 4, level = 0, toplevel = tr
         {
             let value = obj[key];
             r += ' '.repeat(indent * level)
-              +  to_str(key, '=');
+              +  to_str(key, '=', '{'); // }
             if (value instanceof Array) {
                 if (value.length == 0)
                     r += " = []\n";
@@ -90,7 +91,7 @@ exports.to_thindf = function to_thindf(obj, indent = 4, level = 0, toplevel = tr
             }
             else if (value instanceof Object)
                 if (Object.keys(value).length == 0)
-                    r += " = {}\n";
+                    r += " {}\n";
                 else {
                     r += "\n" + to_thindf(value, indent, level+1, false);
                     if (Object.keys(value).length > 2 && index < Object.keys(obj).length-1)
@@ -350,7 +351,7 @@ exports.parse = function (s)
             continue;
         }
         const start = i;
-        const key = from_str('=');
+        const key = from_str('={'); // }
         for (; i < s.length && " \t".includes(s[i]); i++); // skip spaces after key
 
         if (i < s.length && s[i] == '=') {
@@ -369,10 +370,6 @@ exports.parse = function (s)
                     i += 2;
                     value = [];
                 }
-                else if (s.slice(i, i+2) == '{}') {
-                    i += 2;
-                    value = {};
-                }
                 else
                     value = from_str(';');
                 if (!(obj_stack[obj_stack.length-1] instanceof Object && !(obj_stack[obj_stack.length-1] instanceof Array)))
@@ -383,6 +380,13 @@ exports.parse = function (s)
         else
             if (obj_stack[obj_stack.length-1] instanceof Array)
                 obj_stack[obj_stack.length-1].push(key);
+            else if (i < s.length && s[i] == '{') {
+                i++;
+                if (!(i < s.length && s[i] == '}')) // {
+                    throw new ParseError('expected `}`', i);
+                i++;
+                obj_stack[obj_stack.length-1][key] = {};
+            }
             else {
                 expected_an_indented_block = true;
                 const new_dict = {};
