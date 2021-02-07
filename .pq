@@ -4,6 +4,8 @@
 
 thindf is a thin data format, an alternative to JSON[https://en.wikipedia.org/wiki/JSON ‘a very common data format’].
 
+The aim of thindf is to almost completely get rid of all visual noise of JSON (such as `{`, `}`, `"`, and `,`).
+
 
 Examples:
 T‘
