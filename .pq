@@ -14,9 +14,11 @@ H‘‘JSON’ ‘ELDF’’
 ‘‘#‘
 {
     "personal": {
-        "host": 5060852864,
-        "is_team": false,
-        "subscription_type": "Basic",
+        "host": 50608,
+        "subscription": {
+            "type": "Basic",
+            "bills": "monthly"
+        },
         "path": "C:\\Users\\DNS\\Dropbox"
     }
 }
@@ -24,10 +26,12 @@ H‘‘JSON’ ‘ELDF’’
 ’‘#‘
 
 personal
-    host = 5060852864
-    is_team = 0B
-    subscription_type = Basic
+    host = 50608
+    subscription
+        type = Basic
+        bills = monthly
     path = C:\Users\DNS\Dropbox
+
 
 
 ’’’
