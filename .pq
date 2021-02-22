@@ -233,8 +233,10 @@ Issues (bugs and feature requests):
 Articles on ELDF:
 . ‘Article on habr.com (in Russian) titled ‘‘ELDF — новый текстовый формат данных (альтернатива JSON)’’’[https://habr.com/post/419361/]
 
+[[[
 
 
 
 
 ><‘P‘https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png’[https://www.paypal.me/alextretyak]’
+]]]

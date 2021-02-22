@@ -233,8 +233,10 @@ function update2()
 Статьи по ELDF:
 . ‘Статья на Хабре ‘‘ELDF — новый текстовый формат данных (альтернатива JSON)’’’[https://habr.com/post/419361/]
 
+[[[
 
 
 
 
 ><‘P‘https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png’[https://www.paypal.me/alextretyak]’
+]]]
