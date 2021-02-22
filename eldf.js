@@ -1,4 +1,4 @@
-exports.to_thindf = function to_thindf(obj, indent = 4, level = 0, toplevel = true)
+exports.to_eldf = function to_eldf(obj, indent = 4, level = 0, toplevel = true)
 {
     function balance_pq_string(s)
     {
@@ -51,7 +51,7 @@ exports.to_thindf = function to_thindf(obj, indent = 4, level = 0, toplevel = tr
                 for (let [index2, subvalue] of value.entries())
                 {
                     if (subvalue instanceof Object)
-                        throw new Error('sorry, but this object can not be represented in thindf (element `' + JSON.stringify(subvalue) + '` of `' + JSON.stringify(value) + '`)');
+                        throw new Error('sorry, but this object can not be represented in ELDF (element `' + JSON.stringify(subvalue) + '` of `' + JSON.stringify(value) + '`)');
                     r += to_str(subvalue, ',');
                     if (index2 < value.length-1)
                         r += ', ';
@@ -62,7 +62,7 @@ exports.to_thindf = function to_thindf(obj, indent = 4, level = 0, toplevel = tr
                 if (Object.keys(value).length == 0)
                     r += ' '.repeat(indent * level) + '.' + ' '.repeat(indent-1) + "{}\n";
                 else {
-                    r += ' '.repeat(indent * level) + '.' + to_thindf(value, indent, level+1, false).slice(indent * level + 1);
+                    r += ' '.repeat(indent * level) + '.' + to_eldf(value, indent, level+1, false).slice(indent * level + 1);
                     if (Object.keys(value).length > 2 && index < obj.length-1)
                         r += "\n";
                 }
@@ -86,14 +86,14 @@ exports.to_thindf = function to_thindf(obj, indent = 4, level = 0, toplevel = tr
                 if (value.length == 0)
                     r += " = []\n";
                 else
-                    r += " = [\n" + to_thindf(value, indent, level, false)
+                    r += " = [\n" + to_eldf(value, indent, level, false)
                       + ' '.repeat(indent * level) + "]\n";
             }
             else if (value instanceof Object)
                 if (Object.keys(value).length == 0)
                     r += " {}\n";
                 else {
-                    r += "\n" + to_thindf(value, indent, level+1, false);
+                    r += "\n" + to_eldf(value, indent, level+1, false);
                     if (Object.keys(value).length > 2 && index < Object.keys(obj).length-1)
                         r += "\n";
                 }
@@ -224,7 +224,7 @@ exports.parse = function (s)
     let i = 0;
 
     if (s.length == 0)
-        throw new ParseError('empty thindf is not allowed', 0);
+        throw new ParseError('empty ELDF is not allowed', 0);
     if (s[0] == '[') {
         console.assert(s.length >= 2);
         if (s[1] == ']') {

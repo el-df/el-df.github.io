@@ -105,14 +105,14 @@ div#main {width: 100%;}
 <br />
 <br />
 <br />
-thindf is a thin data format, an alternative to <a href="https://en.wikipedia.org/wiki/JSON" title="a very common data format">JSON</a>.<br />
+ELDF is an <b>e</b>xtra<!--[[[/extremely]]]--> <b>l</b>ightweight <b>d</b>ata <b>f</b>ormat, an alternative to <a href="https://en.wikipedia.org/wiki/JSON" title="a very common data format">JSON</a>.<br />
 <br />
-The aim of thindf is to almost completely get rid of all visual noise of JSON (such as <pre class="inline_code">{</pre>, <pre class="inline_code">}</pre>, <pre class="inline_code">"</pre>, and <pre class="inline_code">,</pre>).<br />
+The aim of ELDF is to almost completely get rid of all visual noise of JSON (such as <pre class="inline_code">{</pre>, <pre class="inline_code">}</pre>, <pre class="inline_code">"</pre>, and <pre class="inline_code">,</pre>).<br />
 <br />
 <br />
 Examples:<br />
 <table>
-<tr><th>JSON</th><th>thindf</th></tr>
+<tr><th>JSON</th><th>ELDF</th></tr>
 <tr><td><pre class="code_block">
 {
     "personal": {
@@ -274,7 +274,7 @@ function update()
 {
     let json = document.getElementById('JSON').value;
     try {
-        document.getElementById('thindf').value = exports.to_thindf(JSON.parse(json));
+        document.getElementById('eldf').value = exports.to_eldf(JSON.parse(json));
     }
     catch (e) {
         let m = e.message.match(/ at position (\d+)/), msg;
@@ -282,36 +282,36 @@ function update()
             msg = 'Error: ' + e.message;
         else
             msg = form_error_message(json, Number(m[1]), JSON.stringify(e.message.replace(/ at position \d+/, '')).slice(1, -1));
-        document.getElementById('thindf').value = msg;
+        document.getElementById('eldf').value = msg;
     }
 }
 var exports = {};
 </script>
-<script src="./thindf.js"></script>
+<script src="./eldf.js"></script>
 <textarea id="JSON" oninput="update()" style="font-family: 'Courier New'; width: 100%; height: 300px">Try it yourself!
-(Just enter JSON here and see the resulting thindf in the right column.)</textarea>
+(Just enter JSON here and see the resulting ELDF in the right column.)</textarea>
 <br />
 </td><td>
-<textarea id="thindf" style="font-family: 'Courier New'; width: 100%; height: 300px" readonly></textarea>
+<textarea id="eldf" style="font-family: 'Courier New'; width: 100%; height: 300px" readonly></textarea>
 <br />
 </td></tr>
 <tr><td>
 <script>
 function update2()
 {
-    let thindf = document.getElementById('thindf2').value;
+    let eldf = document.getElementById('eldf2').value;
     try {
-        document.getElementById('JSON2').value = JSON.stringify(exports.parse(thindf), null, 4);
+        document.getElementById('JSON2').value = JSON.stringify(exports.parse(eldf), null, 4);
     }
     catch (e) {
-        document.getElementById('JSON2').value = form_error_message(thindf, e.pos, 'Error: ' + e.message);
+        document.getElementById('JSON2').value = form_error_message(eldf, e.pos, 'Error: ' + e.message);
     }
 }
 </script>
 <textarea id="JSON2" style="font-family: 'Courier New'; width: 100%; height: 300px" readonly></textarea>
 <br />
 </td><td>
-<textarea id="thindf2" oninput="update2()" style="font-family: 'Courier New'; width: 100%; height: 300px">Or enter thindf here and see the corresponding JSON in the left column.</textarea>
+<textarea id="eldf2" oninput="update2()" style="font-family: 'Courier New'; width: 100%; height: 300px">Or enter ELDF here and see the corresponding JSON in the left column.</textarea>
 <br />
 </td></tr>
 </table>
@@ -319,15 +319,15 @@ function update2()
 <br />
 Reference implementation in Python and JavaScript:<br />
 <ul>
-<li><a href="https://pypi.org/project/thindf/">Project thindf at the Python Package Index</a></li>
-<li><a href="https://npmjs.com/package/thindf">Node.js Package</a></li>
-<li><a href="https://sourceforge.net/p/thindf/code/" title="<- https://bitbucket.org/thindf/thindf">Link to the main repository</a></li>
+<li><a href="https://pypi.org/project/eldf/">Project eldf at the Python Package Index</a></li>
+<li><a href="https://npmjs.com/package/eldf">Node.js Package</a></li>
+<li><a href="https://sourceforge.net/p/eldf/code/">Link to the main repository</a></li>
 </ul>
 <br />
 <br />
-Articles on thindf:<br />
+Articles on eldf:<br />
 <ul>
-<li><a href="https://habr.com/post/419361/">Article on habr.com (in Russian) titled ‘‘thindf — новый текстовый формат данных (альтернатива JSON)’’</a></li>
+<li><a href="https://habr.com/post/419361/">Article on habr.com (in Russian) titled ‘‘ELDF — новый текстовый формат данных (альтернатива JSON)’’</a></li>
 </ul>
 <br />
 <br />

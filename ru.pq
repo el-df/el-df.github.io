@@ -2,14 +2,14 @@
 
 
 
-thindf — это "тонкий" формат данных (thin data format), альтернатива JSON[https://ru.wikipedia.org/wiki/JSON ‘a very common data format’].
+ELDF — это облегчённый формат данных (*‘e’xtra[[[/extremely]]] *‘l’ightweight *‘d’ata *‘f’ormat), альтернатива JSON[https://ru.wikipedia.org/wiki/JSON ‘a very common data format’].
 
-Цель/назначение thindf заключается в том, чтобы почти полностью избавиться от визуального шума формата JSON (такого как символы `{`, `}`, `"` и `,`).
+Цель/назначение ELDF заключается в том, чтобы почти полностью избавиться от визуального шума[[[/мусора]]] формата JSON (такого как символы `{`, `}`, `"` и `,`).
 
 
 Примеры:
 Т‘
-Н‘‘JSON’ ‘thindf’’
+Н‘‘JSON’ ‘ELDF’’
 ‘‘#‘
 {
     "personal": {
@@ -173,7 +173,7 @@ function update()
 {
     let json = document.getElementById('JSON').value;
     try {
-        document.getElementById('thindf').value = exports.to_thindf(JSON.parse(json));
+        document.getElementById('eldf').value = exports.to_eldf(JSON.parse(json));
     }
     catch (e) {
         let m = e.message.match(/ at position (\d+)/), msg;
@@ -181,49 +181,49 @@ function update()
             msg = 'Error: ' + e.message;
         else
             msg = form_error_message(json, Number(m[1]), JSON.stringify(e.message.replace(/ at position \d+/, '')).slice(1, -1));
-        document.getElementById('thindf').value = msg;
+        document.getElementById('eldf').value = msg;
     }
 }
 var exports = {};
 </script>
-<script src="../thindf.js"></script>
+<script src="../eldf.js"></script>
 <textarea id="JSON" oninput="update()" style="font-family: 'Courier New'; width: 100%; height: 300px">Попробуйте сами!
-(Просто введите JSON в это текстовое поле и сразу же получите результат в формате thindf в правой колонке.)</textarea>
+(Просто введите JSON в это текстовое поле и сразу же получите результат в формате ELDF в правой колонке.)</textarea>
 ’'
 ’‘'‘
-<textarea id="thindf" style="font-family: 'Courier New'; width: 100%; height: 300px" readonly></textarea>
+<textarea id="eldf" style="font-family: 'Courier New'; width: 100%; height: 300px" readonly></textarea>
 ’'
 ’’
 ‘‘'‘
 <script>
 function update2()
 {
-    let thindf = document.getElementById('thindf2').value;
+    let eldf = document.getElementById('eldf2').value;
     try {
-        document.getElementById('JSON2').value = JSON.stringify(exports.parse(thindf), null, 4);
+        document.getElementById('JSON2').value = JSON.stringify(exports.parse(eldf), null, 4);
     }
     catch (e) {
-        document.getElementById('JSON2').value = form_error_message(thindf, e.pos, 'Error: ' + e.message);
+        document.getElementById('JSON2').value = form_error_message(eldf, e.pos, 'Error: ' + e.message);
     }
 }
 </script>
 <textarea id="JSON2" style="font-family: 'Courier New'; width: 100%; height: 300px" readonly></textarea>
 ’'
 ’‘'‘
-<textarea id="thindf2" oninput="update2()" style="font-family: 'Courier New'; width: 100%; height: 300px">Или введите thindf здесь, чтобы получить соответствующий JSON в левой колонке.</textarea>
+<textarea id="eldf2" oninput="update2()" style="font-family: 'Courier New'; width: 100%; height: 300px">Или введите ELDF здесь, чтобы получить соответствующий JSON в левой колонке.</textarea>
 ’'
 ’’
 ’
 
 
 [[[Базовая/]Оригинальная[/Авторская] ]]Реализация на языках Python и JavaScript:
-. ‘Страница проекта thindf в Python Package Index’[https://pypi.org/project/thindf/]
-. ‘Node.js Package’[https://npmjs.com/package/thindf]
-. ‘Ссылка на основной репозиторий’[https://sourceforge.net/p/thindf/code/ <- https://bitbucket.org/thindf/thindf]
+. ‘Страница проекта eldf в Python Package Index’[https://pypi.org/project/eldf/]
+. ‘Node.js Package’[https://npmjs.com/package/eldf]
+. ‘Ссылка на основной репозиторий’[https://sourceforge.net/p/eldf/code/]
 
 
-Статьи по thindf:
-. ‘Статья на Хабре ‘‘thindf — новый текстовый формат данных (альтернатива JSON)’’’[https://habr.com/post/419361/]
+Статьи по eldf:
+. ‘Статья на Хабре ‘‘ELDF — новый текстовый формат данных (альтернатива JSON)’’’[https://habr.com/post/419361/]
 
 
 

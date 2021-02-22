@@ -105,14 +105,14 @@ div#main {width: 100%;}
 <br />
 <br />
 <br />
-thindf — это "тонкий" формат данных (thin data format), альтернатива <a href="https://ru.wikipedia.org/wiki/JSON" title="a very common data format">JSON</a>.<br />
+ELDF — это облегчённый формат данных (<b>e</b>xtra<!--[[[/extremely]]]--> <b>l</b>ightweight <b>d</b>ata <b>f</b>ormat), альтернатива <a href="https://ru.wikipedia.org/wiki/JSON" title="a very common data format">JSON</a>.<br />
 <br />
-Цель/назначение thindf заключается в том, чтобы почти полностью избавиться от визуального шума формата JSON (такого как символы <pre class="inline_code">{</pre>, <pre class="inline_code">}</pre>, <pre class="inline_code">"</pre> и <pre class="inline_code">,</pre>).<br />
+Цель/назначение ELDF заключается в том, чтобы почти полностью избавиться от визуального шума<!--[[[/мусора]]]--> формата JSON (такого как символы <pre class="inline_code">{</pre>, <pre class="inline_code">}</pre>, <pre class="inline_code">"</pre> и <pre class="inline_code">,</pre>).<br />
 <br />
 <br />
 Примеры:<br />
 <table>
-<tr><th>JSON</th><th>thindf</th></tr>
+<tr><th>JSON</th><th>ELDF</th></tr>
 <tr><td><pre class="code_block">
 {
     "personal": {
@@ -274,7 +274,7 @@ function update()
 {
     let json = document.getElementById('JSON').value;
     try {
-        document.getElementById('thindf').value = exports.to_thindf(JSON.parse(json));
+        document.getElementById('eldf').value = exports.to_eldf(JSON.parse(json));
     }
     catch (e) {
         let m = e.message.match(/ at position (\d+)/), msg;
@@ -282,36 +282,36 @@ function update()
             msg = 'Error: ' + e.message;
         else
             msg = form_error_message(json, Number(m[1]), JSON.stringify(e.message.replace(/ at position \d+/, '')).slice(1, -1));
-        document.getElementById('thindf').value = msg;
+        document.getElementById('eldf').value = msg;
     }
 }
 var exports = {};
 </script>
-<script src="../thindf.js"></script>
+<script src="../eldf.js"></script>
 <textarea id="JSON" oninput="update()" style="font-family: 'Courier New'; width: 100%; height: 300px">Попробуйте сами!
-(Просто введите JSON в это текстовое поле и сразу же получите результат в формате thindf в правой колонке.)</textarea>
+(Просто введите JSON в это текстовое поле и сразу же получите результат в формате ELDF в правой колонке.)</textarea>
 <br />
 </td><td>
-<textarea id="thindf" style="font-family: 'Courier New'; width: 100%; height: 300px" readonly></textarea>
+<textarea id="eldf" style="font-family: 'Courier New'; width: 100%; height: 300px" readonly></textarea>
 <br />
 </td></tr>
 <tr><td>
 <script>
 function update2()
 {
-    let thindf = document.getElementById('thindf2').value;
+    let eldf = document.getElementById('eldf2').value;
     try {
-        document.getElementById('JSON2').value = JSON.stringify(exports.parse(thindf), null, 4);
+        document.getElementById('JSON2').value = JSON.stringify(exports.parse(eldf), null, 4);
     }
     catch (e) {
-        document.getElementById('JSON2').value = form_error_message(thindf, e.pos, 'Error: ' + e.message);
+        document.getElementById('JSON2').value = form_error_message(eldf, e.pos, 'Error: ' + e.message);
     }
 }
 </script>
 <textarea id="JSON2" style="font-family: 'Courier New'; width: 100%; height: 300px" readonly></textarea>
 <br />
 </td><td>
-<textarea id="thindf2" oninput="update2()" style="font-family: 'Courier New'; width: 100%; height: 300px">Или введите thindf здесь, чтобы получить соответствующий JSON в левой колонке.</textarea>
+<textarea id="eldf2" oninput="update2()" style="font-family: 'Courier New'; width: 100%; height: 300px">Или введите ELDF здесь, чтобы получить соответствующий JSON в левой колонке.</textarea>
 <br />
 </td></tr>
 </table>
@@ -319,15 +319,15 @@ function update2()
 <br />
 <!--[[[Базовая/]Оригинальная[/Авторская] ]]-->Реализация на языках Python и JavaScript:<br />
 <ul>
-<li><a href="https://pypi.org/project/thindf/">Страница проекта thindf в Python Package Index</a></li>
-<li><a href="https://npmjs.com/package/thindf">Node.js Package</a></li>
-<li><a href="https://sourceforge.net/p/thindf/code/" title="<- https://bitbucket.org/thindf/thindf">Ссылка на основной репозиторий</a></li>
+<li><a href="https://pypi.org/project/eldf/">Страница проекта eldf в Python Package Index</a></li>
+<li><a href="https://npmjs.com/package/eldf">Node.js Package</a></li>
+<li><a href="https://sourceforge.net/p/eldf/code/">Ссылка на основной репозиторий</a></li>
 </ul>
 <br />
 <br />
-Статьи по thindf:<br />
+Статьи по eldf:<br />
 <ul>
-<li><a href="https://habr.com/post/419361/">Статья на Хабре ‘‘thindf — новый текстовый формат данных (альтернатива JSON)’’</a></li>
+<li><a href="https://habr.com/post/419361/">Статья на Хабре ‘‘ELDF — новый текстовый формат данных (альтернатива JSON)’’</a></li>
 </ul>
 <br />
 <br />
