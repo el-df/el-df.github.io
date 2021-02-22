@@ -1,4 +1,5 @@
->>‘\/‘‘(This page in English\Эта страница на английском)’[./..]’’
+[[[H‘ELDF’
+]]]>>‘\/‘‘(This page in English\Эта страница на английском)’[./..]’’
 
 
 
@@ -222,7 +223,14 @@ function update2()
 . ‘Ссылка на основной репозиторий’[https://sourceforge.net/p/eldf/code/]
 
 
-Статьи по eldf:
+‘Форум для обсуждения’[https://sourceforge.net/p/eldf/discussion/]
+
+Сообщить об ошибке или предложить идею[[[предложение]]]:
+. GitHub[https://github.com/el-df/eldf/issues]
+. SourceForge.net[https://sourceforge.net/p/eldf/tickets/]
+
+
+Статьи по ELDF:
 . ‘Статья на Хабре ‘‘ELDF — новый текстовый формат данных (альтернатива JSON)’’’[https://habr.com/post/419361/]
 
 

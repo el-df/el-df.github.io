@@ -1,4 +1,5 @@
->>‘\/‘‘(Эта страница на русском\This page in Russian)’[./ru]’’
+[[[H‘ELDF’
+]]]>>‘\/‘‘(Эта страница на русском\This page in Russian)’[./ru]’’
 
 
 
@@ -222,7 +223,14 @@ Reference implementation in Python and JavaScript:
 . ‘Link to the main repository’[https://sourceforge.net/p/eldf/code/]
 
 
-Articles on eldf:
+‘Discussion Forum’[https://sourceforge.net/p/eldf/discussion/]
+
+Issues (bugs and feature requests):
+. GitHub[https://github.com/el-df/eldf/issues]
+. SourceForge.net[https://sourceforge.net/p/eldf/tickets/]
+
+
+Articles on ELDF:
 . ‘Article on habr.com (in Russian) titled ‘‘ELDF — новый текстовый формат данных (альтернатива JSON)’’’[https://habr.com/post/419361/]
 
 
