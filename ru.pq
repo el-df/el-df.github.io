@@ -3,7 +3,13 @@
 
 
 
-ELDF — это облегчённый формат данных (*‘e’xtra[[[/extremely]]] *‘l’ightweight *‘d’ata *‘f’ormat), альтернатива JSON[https://ru.wikipedia.org/wiki/JSON ‘a very common data format’].
+ELDF — это облегчённый формат данных (*‘e’xtra[[[/extremely]]] *‘l’ightweight *‘d’ata *‘f’ormat), альтернатива JSON[https://ru.wikipedia.org/wiki/JSON].
+‘[[[Почему ]]]EL?’{
+В то время как JSON — это lightweight data format {
+>[https://json.org]:‘JSON (JavaScript Object Notation) is a lightweight dataC(6)‘-interchange’ format.’
+}, ELDF — extra lightweight.
+Также ELDF означает ELevenel[http://elevenel.org] Data Format.
+}
 
 Цель/назначение ELDF заключается в том, чтобы почти полностью избавиться от визуального шума[[[/мусора]]] формата JSON (такого как символы `{`, `}`, `"` и `,`).
 

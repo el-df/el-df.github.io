@@ -4,6 +4,12 @@
 
 
 ELDF is an *‘e’xtra[[[/extremely]]] *‘l’ightweight *‘d’ata *‘f’ormat, an alternative to JSON[https://en.wikipedia.org/wiki/JSON ‘a very common data format’].
+‘[[[Why ]]]EL?’{
+While JSON is a lightweight data format {
+>[https://json.org]:‘JSON (JavaScript Object Notation) is a lightweight dataC(6)‘-interchange’ format.’
+}, ELDF is an extra lightweight.
+Also ELDF means ELevenel[http://elevenel.org] Data Format.
+}
 
 The aim of ELDF is to almost completely get rid of all visual noise of JSON (such as `{`, `}`, `"`, and `,`).
 
