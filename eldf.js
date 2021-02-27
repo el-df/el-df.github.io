@@ -22,7 +22,7 @@ exports.to_eldf = function to_eldf(obj, indent = 4, level = 0, toplevel = true)
     function to_str(v, additional_prohibited_character = null, additional_prohibited_character2 = null)
     {
         if (typeof(v) == 'number')
-            return v.toString();
+            return v.toString().replace('e+', 'e');
         if (typeof(v) == 'boolean')
             return v ? '1B' : '0B';
         if (v == null)
@@ -102,6 +102,8 @@ exports.to_eldf = function to_eldf(obj, indent = 4, level = 0, toplevel = true)
             index++;
         }
     }
+    else
+        throw new Error('sorry, but this object can not be represented in ELDF');
 
     return r;
 }
