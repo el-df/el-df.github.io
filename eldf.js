@@ -138,7 +138,7 @@ exports.parse = function (s)
 
     function from_str(stop_characters)
     {
-        const start = i;
+        let start = i;
         if (s[i] == '"') {
             for (i++; i < s.length; i++)
             {
@@ -151,7 +151,13 @@ exports.parse = function (s)
             }
             return JSON.parse(s.slice(start, i));
         }
-        else if (s[i] == '‘') { // ’
+        else if (s[i] == '‘' || (s[i] == '\\' && s.slice(i+1, i+3) == '/‘')) { // ’’
+            if (s[i] == '\\') {
+                if (s[i+3] != "\n")
+                    throw new ParseError('Zero indented multi-line string literal must start with a new line', i);
+                i += 2;
+                start += 3;
+            }
             const endqpos = find_ending_pair_quote(i);
             for (i = endqpos + 1; i < s.length; i++)
                 if (s[i] != "'")
