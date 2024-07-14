@@ -193,7 +193,7 @@ exports.parse = function (s)
         else if ((s[i] >= '0' && s[i] <= '9') || (s[i] == '-' && s.slice(i+1, i+2) >= '0' && s.slice(i+1, i+2) <= '9')) {
             let is_float = false;
             for (i++; i < s.length;) {
-                if (!(s[i] >= '0' && s[i] <= '9')) {
+                if (!((s[i] >= '0' && s[i] <= '9') || s[i] == "'")) {
                     if ('.eE'.includes(s[i])) {
                         is_float = true;
                         i++;
@@ -211,7 +211,7 @@ exports.parse = function (s)
                 }
                 i++;
             }
-            const ss = s.slice(start, i);
+            const ss = s.slice(start, i).replaceAll("'", '');
             return is_float ? parseFloat(ss) : parseInt(ss);
         }
         stop_characters += "\r\n";
