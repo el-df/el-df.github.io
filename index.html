@@ -119,6 +119,66 @@ Also ELDF means <a href="http://elevenel.org">ELevenel</a> Data Format.<br />
 The aim of ELDF is to almost completely get rid of all visual noise of JSON (such as <pre class="inline_code">{</pre>, <pre class="inline_code">}</pre>, <pre class="inline_code">"</pre>, and <pre class="inline_code">,</pre>).<br />
 <br />
 <br />
+<table>
+<tr><td><span class="spoiler_title" onclick="return spoiler2(this, event)">Ultimate examples<br /></span><div class="spoiler_text" style="display: none">
+Consider the following ELDF object:<br />
+<pre class="code_block">
+to_html
+    type = function
+    node
+        function_arguments = [
+        .   name = instr
+        .   name = ohd
+            default_value = ‘0B’
+        .   name = habr_html
+        ]
+</pre>
+<br />
+Direct translation to JSON <!--[[[is/]]]-->turns out to be too verbose:<br />
+<pre class="code_block">
+{
+    "to_html": {
+        "type": "function",
+        "node": {
+            "function_arguments": [
+                {
+                    "name": "instr"
+                },
+                {
+                    "name": "ohd",
+                    "default_value": "0B"
+                },
+                {
+                    "name": "habr_html"
+                }
+            ]
+        }
+    }
+}
+</pre>
+<br />
+This JSON can be compactized to:<br />
+<pre class="code_block">
+{
+"to_html": {
+    "type": "function",
+    "node": {
+        "function_arguments": [
+            {"name": "instr"},
+            {"name": "ohd",
+             "default_value": "0B"},
+            {"name": "habr_html"}
+        ]
+    }
+}
+}
+</pre>
+<br />
+But this form is not so obvious as ELDF—it looks like there are 4 function arguments, not 3.<br />
+</div>
+</td></tr>
+</table>
+<br />
 Examples:<br />
 <table>
 <tr><th>JSON</th><th>ELDF</th></tr>
