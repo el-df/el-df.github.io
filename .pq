@@ -14,63 +14,6 @@ Also ELDF means ELevenel[http://elevenel.org] Data Format.
 The aim of ELDF is to almost completely get rid of all visual noise of JSON (such as `{`, `}`, `"`, and `,`).
 
 
-T‘‘‘‘Ultimate examples’{
-Consider the following ELDF object:
-#‘
-to_html
-    type = function
-    node
-        function_arguments = [
-        .   name = instr
-        .   name = ohd
-            default_value = ‘0B’
-        .   name = habr_html
-        ]
-’
-
-Direct translation to JSON [[[is/]]]turns out to be too verbose:
-#‘
-{
-    "to_html": {
-        "type": "function",
-        "node": {
-            "function_arguments": [
-                {
-                    "name": "instr"
-                },
-                {
-                    "name": "ohd",
-                    "default_value": "0B"
-                },
-                {
-                    "name": "habr_html"
-                }
-            ]
-        }
-    }
-}
-’
-
-This JSON can be compactized to:
-#‘
-{
-"to_html": {
-    "type": "function",
-    "node": {
-        "function_arguments": [
-            {"name": "instr"},
-            {"name": "ohd",
-             "default_value": "0B"},
-            {"name": "habr_html"}
-        ]
-    }
-}
-}
-’
-
-But this form is not so obvious as ELDF—it looks like there are 4 function arguments, not 3.
-}’’’
-
 Examples:
 T‘
 H‘‘JSON’ ‘ELDF’’
@@ -282,6 +225,63 @@ function update2()
 ’'
 ’’
 ’
+
+T‘‘‘‘Ultimate examples’{
+Consider the following ELDF object:
+#‘
+to_html
+    type = function
+    node
+        function_arguments = [
+        .   name = instr
+        .   name = ohd
+            default_value = ‘0B’
+        .   name = habr_html
+        ]
+’
+
+Direct translation to JSON [[[is/]]]turns out to be too verbose:
+#‘
+{
+    "to_html": {
+        "type": "function",
+        "node": {
+            "function_arguments": [
+                {
+                    "name": "instr"
+                },
+                {
+                    "name": "ohd",
+                    "default_value": "0B"
+                },
+                {
+                    "name": "habr_html"
+                }
+            ]
+        }
+    }
+}
+’
+
+This JSON can be compactized to:
+#‘
+{
+"to_html": {
+    "type": "function",
+    "node": {
+        "function_arguments": [
+            {"name": "instr"},
+            {"name": "ohd",
+             "default_value": "0B"},
+            {"name": "habr_html"}
+        ]
+    }
+}
+}
+’
+
+But this form is not so obvious as ELDF—it looks like there are 4 function arguments, not 3.
+}’’’
 
 
 Reference implementation in Python and JavaScript:
