@@ -330,7 +330,7 @@ function update2()
 </table>
 <br />
 <table>
-<tr><td><span class="spoiler_title" onclick="return spoiler2(this, event)">Ultimate examples<br /></span><div class="spoiler_text" style="display: none">
+<tr><td><span class="spoiler_title" onclick="return spoiler2(this, event)">Glaring examples<br /></span><div class="spoiler_text" style="display: none">
 Consider the following ELDF object:<br />
 <pre class="code_block">
 to_html
@@ -338,8 +338,8 @@ to_html
     node
         function_arguments = [
         .   name = instr
-        .   name = ohd
-            default_value = ‘0B’
+        .   outer_name = output_html_document
+            inner_name = ohd
         .   name = habr_html
         ]
 </pre>
@@ -355,8 +355,8 @@ Direct translation to JSON <!--[[[is/]]]-->turns out to be too verbose:<br />
                     "name": "instr"
                 },
                 {
-                    "name": "ohd",
-                    "default_value": "0B"
+                    "outer_name": "output_html_document",
+                    "inner_name": "ohd"
                 },
                 {
                     "name": "habr_html"
@@ -375,8 +375,8 @@ This JSON can be compactized to:<br />
     "node": {
         "function_arguments": [
             {"name": "instr"},
-            {"name": "ohd",
-             "default_value": "0B"},
+            {"outer_name": "output_html_document",
+             "inner_name": "ohd"},
             {"name": "habr_html"}
         ]
     }

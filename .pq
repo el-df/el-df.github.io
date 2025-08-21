@@ -226,7 +226,10 @@ function update2()
 ’’
 ’
 
-T‘‘‘‘Ultimate examples’{
+T‘‘‘‘[[[Ultimate/]
+>[https://www.modular.com/blog/democratizing-ai-compute-part-5-what-about-cuda-c-alternatives]:‘
+One glaring example?’
+]]Glaring examples’{
 Consider the following ELDF object:
 #‘
 to_html
@@ -234,8 +237,8 @@ to_html
     node
         function_arguments = [
         .   name = instr
-        .   name = ohd
-            default_value = ‘0B’
+        .   outer_name = output_html_document
+            inner_name = ohd
         .   name = habr_html
         ]
 ’
@@ -251,8 +254,8 @@ Direct translation to JSON [[[is/]]]turns out to be too verbose:
                     "name": "instr"
                 },
                 {
-                    "name": "ohd",
-                    "default_value": "0B"
+                    "outer_name": "output_html_document",
+                    "inner_name": "ohd"
                 },
                 {
                     "name": "habr_html"
@@ -271,8 +274,8 @@ This JSON can be compactized to:
     "node": {
         "function_arguments": [
             {"name": "instr"},
-            {"name": "ohd",
-             "default_value": "0B"},
+            {"outer_name": "output_html_document",
+             "inner_name": "ohd"},
             {"name": "habr_html"}
         ]
     }

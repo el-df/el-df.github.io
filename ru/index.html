@@ -329,6 +329,66 @@ function update2()
 </td></tr>
 </table>
 <br />
+<table>
+<tr><td><span class="spoiler_title" onclick="return spoiler2(this, event)">Яркие примеры<br /></span><div class="spoiler_text" style="display: none">
+Рассмотрим следующий объект ELDF:<br />
+<pre class="code_block">
+to_html
+    type = function
+    node
+        function_arguments = [
+        .   name = instr
+        .   outer_name = output_html_document
+            inner_name = ohd
+        .   name = habr_html
+        ]
+</pre>
+<br />
+Прямой перевод в JSON получается слишком многословным:<br />
+<pre class="code_block">
+{
+    "to_html": {
+        "type": "function",
+        "node": {
+            "function_arguments": [
+                {
+                    "name": "instr"
+                },
+                {
+                    "outer_name": "output_html_document",
+                    "inner_name": "ohd"
+                },
+                {
+                    "name": "habr_html"
+                }
+            ]
+        }
+    }
+}
+</pre>
+<br />
+Этот JSON можно <!--[[[сократить так]]]-->записать более коротко:<br />
+<pre class="code_block">
+{
+"to_html": {
+    "type": "function",
+    "node": {
+        "function_arguments": [
+            {"name": "instr"},
+            {"outer_name": "output_html_document",
+             "inner_name": "ohd"},
+            {"name": "habr_html"}
+        ]
+    }
+}
+}
+</pre>
+<br />
+Но эта запись не так очевидна, как ELDF — похоже, что аргументов функции 4, а не 3.<br />
+</div>
+</td></tr>
+</table>
+<br />
 <br />
 <!--[[[Базовая/]Оригинальная[/Авторская] ]]-->Реализация на языках Python и JavaScript:<br />
 <ul>

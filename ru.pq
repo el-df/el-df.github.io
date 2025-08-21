@@ -226,6 +226,63 @@ function update2()
 ’’
 ’
 
+T‘‘‘‘Яркие примеры’{
+Рассмотрим следующий объект ELDF:
+#‘
+to_html
+    type = function
+    node
+        function_arguments = [
+        .   name = instr
+        .   outer_name = output_html_document
+            inner_name = ohd
+        .   name = habr_html
+        ]
+’
+
+Прямой перевод в JSON получается слишком многословным:
+#‘
+{
+    "to_html": {
+        "type": "function",
+        "node": {
+            "function_arguments": [
+                {
+                    "name": "instr"
+                },
+                {
+                    "outer_name": "output_html_document",
+                    "inner_name": "ohd"
+                },
+                {
+                    "name": "habr_html"
+                }
+            ]
+        }
+    }
+}
+’
+
+Этот JSON можно [[[сократить так]]]записать более коротко:
+#‘
+{
+"to_html": {
+    "type": "function",
+    "node": {
+        "function_arguments": [
+            {"name": "instr"},
+            {"outer_name": "output_html_document",
+             "inner_name": "ohd"},
+            {"name": "habr_html"}
+        ]
+    }
+}
+}
+’
+
+Но эта запись не так очевидна, как ELDF — похоже, что аргументов функции 4, а не 3.
+}’’’
+
 
 [[[Базовая/]Оригинальная[/Авторская] ]]Реализация на языках Python и JavaScript:
 . ‘Страница проекта eldf в Python Package Index’[https://pypi.org/project/eldf/]
