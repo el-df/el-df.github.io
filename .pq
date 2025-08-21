@@ -283,7 +283,7 @@ This JSON can be compactized to:
 }
 ’
 
-But this form is not so obvious as ELDF—it looks like there are 4 function arguments, not 3.
+But this form is not so obvious as ELDF—[[[it looks like]]]at a quick glance it may seem there are 4 function arguments, not 3.
 }’’’
 
 
