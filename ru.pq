@@ -227,6 +227,9 @@ function update2()
 ’
 
 T‘‘‘‘Яркие примеры’{
+
+><‘*‘1. Повышенная наглядность’’
+
 Рассмотрим следующий объект ELDF:
 #‘
 to_html
@@ -281,6 +284,54 @@ to_html
 ’
 
 Но эта запись не так очевидна, как ELDF — [[[похоже]]]при беглом взгляде может показаться, что аргументов функции 4, а не 3.
+
+><‘*‘2. Многострочные значения’’
+
+‘Эту веб-страницу’[https://godbolt.org/z/je7nz8c91] можно сохранить в ELDF:
+#‘
+language = C++
+
+source_code = \/‘
+#include <stdio.h>
+
+int main()
+{
+    int i;
+    goto middle;
+    for (i=0; i<5; i++) {
+        printf("A");
+middle:
+        printf("B");
+    }
+}
+’
+
+compiler = x86-64 gcc 13.2
+
+compiler_options = -Wall
+
+output = \/‘
+<source>: In function 'int main()':
+<source>:7:5: warning: 'i' is used uninitialized [-Wuninitialized]
+...
+Execution build compiler returned: 0
+Program returned: 0
+BABABABAB’
+’
+
+Пример конфигурационного файла `pq.keys` в REditor:
+#‘
+alt+9 = ‘
+if red:selection.len == 1 & red:selection[0].size == 0
+   red:insert("‘") // ’
+   return
+
+loop(sel) red:selection
+   red:replace(sel, "‘"red:text[sel]"’")
+’
+
+alt+0 = red:insert('‘‘’’)
+’
 }’’’
 
 

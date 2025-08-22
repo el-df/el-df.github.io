@@ -331,6 +331,9 @@ function update2()
 <br />
 <table>
 <tr><td><span class="spoiler_title" onclick="return spoiler2(this, event)">Glaring examples<br /></span><div class="spoiler_text" style="display: none">
+<br />
+<div align="center"><b>1. Extra clarity</b></div>
+<br />
 Consider the following ELDF object:<br />
 <pre class="code_block">
 to_html
@@ -385,6 +388,54 @@ This JSON can be compactized to:<br />
 </pre>
 <br />
 But this form is not so obvious as ELDF—<!--[[[it looks like]]]-->at a quick glance it may seem there are 4 function arguments, not 3.<br />
+<br />
+<div align="center"><b>2. Multi-line strings</b></div>
+<br />
+<a href="https://godbolt.org/z/je7nz8c91">This web page</a> can be backed up in ELDF:<br />
+<pre class="code_block">
+language = C++
+
+source_code = \/‘
+#include &lt;stdio.h>
+
+int main()
+{
+    int i;
+    goto middle;
+    for (i=0; i&lt;5; i++) {
+        printf("A");
+middle:
+        printf("B");
+    }
+}
+’
+
+compiler = x86-64 gcc 13.2
+
+compiler_options = -Wall
+
+output = \/‘
+&lt;source>: In function 'int main()':
+&lt;source>:7:5: warning: 'i' is used uninitialized [-Wuninitialized]
+...
+Execution build compiler returned: 0
+Program returned: 0
+BABABABAB’
+</pre>
+<br />
+Example of a <pre class="inline_code">pq.keys</pre> config file in REditor:<br />
+<pre class="code_block">
+alt+9 = ‘
+if red:selection.len == 1 &amp; red:selection[0].size == 0
+   red:insert("‘") // ’
+   return
+
+loop(sel) red:selection
+   red:replace(sel, "‘"red:text[sel]"’")
+’
+
+alt+0 = red:insert('‘‘’’)
+</pre>
 </div>
 </td></tr>
 </table>

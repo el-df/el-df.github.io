@@ -230,6 +230,9 @@ T‘‘‘‘[[[Ultimate/]
 >[https://www.modular.com/blog/democratizing-ai-compute-part-5-what-about-cuda-c-alternatives]:‘
 One glaring example?’
 ]]Glaring examples’{
+
+><‘*‘1. Extra clarity’’
+
 Consider the following ELDF object:
 #‘
 to_html
@@ -284,6 +287,54 @@ This JSON can be compactized to:
 ’
 
 But this form is not so obvious as ELDF—[[[it looks like]]]at a quick glance it may seem there are 4 function arguments, not 3.
+
+><‘*‘2. Multi-line strings’’
+
+‘This web page’[https://godbolt.org/z/je7nz8c91] can be backed up in ELDF:
+#‘
+language = C++
+
+source_code = \/‘
+#include <stdio.h>
+
+int main()
+{
+    int i;
+    goto middle;
+    for (i=0; i<5; i++) {
+        printf("A");
+middle:
+        printf("B");
+    }
+}
+’
+
+compiler = x86-64 gcc 13.2
+
+compiler_options = -Wall
+
+output = \/‘
+<source>: In function 'int main()':
+<source>:7:5: warning: 'i' is used uninitialized [-Wuninitialized]
+...
+Execution build compiler returned: 0
+Program returned: 0
+BABABABAB’
+’
+
+Example of a `pq.keys` config file in REditor:
+#‘
+alt+9 = ‘
+if red:selection.len == 1 & red:selection[0].size == 0
+   red:insert("‘") // ’
+   return
+
+loop(sel) red:selection
+   red:replace(sel, "‘"red:text[sel]"’")
+’
+
+alt+0 = red:insert('‘‘’’)
+’
 }’’’
 
 
