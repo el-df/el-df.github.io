@@ -319,19 +319,19 @@ Program returned: 0
 BABABABAB’
 ’
 
-Пример конфигурационного файла `pq.keys` в REditor:
+Пример конфигурационного файла `pq.keys` [[[в/]]]для REditor:
 #‘
-alt+9 = ‘
-if red:selection.len == 1 & red:selection[0].size == 0
+alt+9 = ‘[[[’]]|]
+’
+#(11l)‘if red:selection.len == 1 & red:selection[0].size == 0
    red:insert("‘") // ’
    return
 
 loop(sel) red:selection
-   red:replace(sel, "‘"red:text[sel]"’")
-’
+   red:replace(sel, "‘"red:text[sel]"’")’
+#‘[[[‘]]|]’
 
-alt+0 = red:insert('‘‘’’)
-’
+alt+0 = ’#(11l)‘red:insert('‘‘’’)’
 }’’’
 
 

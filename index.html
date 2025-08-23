@@ -423,19 +423,26 @@ Program returned: 0
 BABABABAB’
 </pre>
 <br />
-Example of a <pre class="inline_code">pq.keys</pre> config file in REditor:<br />
+Example of a <pre class="inline_code">pq.keys</pre> config file <!--[[[in/]]]-->for REditor:<br />
 <pre class="code_block">
 alt+9 = ‘
-if red:selection.len == 1 &amp; red:selection[0].size == 0
-   red:insert("‘") // ’
-   return
-
-loop(sel) red:selection
-   red:replace(sel, "‘"red:text[sel]"’")
-’
-
-alt+0 = red:insert('‘‘’’)
 </pre>
+<style>
+span.keyword {color: #0000FF; font-weight: bold;}
+span.identifier {color: #00009F;}
+span.string-literal {color: #800000;}
+span.numeric-literal {color: #008000;}
+span.constant {color: #008000;}
+span.comment {color: #808080;}
+</style><pre style="display: inline"><span class="keyword">if</span> <span class="identifier">red</span>:<span class="identifier">selection</span>.<span class="identifier">len</span> == <span class="numeric-literal">1</span> &amp; <span class="identifier">red</span>:<span class="identifier">selection</span>[<span class="numeric-literal">0</span>].<span class="identifier">size</span> == <span class="numeric-literal">0</span>
+   <span class="identifier">red</span>:<span class="identifier">insert</span>(<span class="string-literal">"‘"</span>) <span class="comment">// ’</span>
+   <span class="keyword">return</span>
+
+<span class="keyword">loop</span>(<span class="identifier">sel</span>) <span class="identifier">red</span>:<span class="identifier">selection</span>
+   <span class="identifier">red</span>:<span class="identifier">replace</span>(<span class="identifier">sel</span>, <span class="string-literal">"‘"</span><span class="identifier">red</span>:<span class="identifier">text</span>[<span class="identifier">sel</span>]<span class="string-literal">"’"</span>)</pre><br />
+<pre style="display: inline">’
+
+alt+0 = </pre><pre style="display: inline"><span class="identifier">red</span>:<span class="identifier">insert</span>(<span class="string-literal"><span style="opacity: 0.25">'‘</span>‘’’</span>)</pre><br />
 </div>
 </td></tr>
 </table>

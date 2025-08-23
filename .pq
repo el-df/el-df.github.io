@@ -322,19 +322,19 @@ Program returned: 0
 BABABABAB’
 ’
 
-Example of a `pq.keys` config file in REditor:
+Example of a `pq.keys` config file [[[in/]]]for REditor:
 #‘
-alt+9 = ‘
-if red:selection.len == 1 & red:selection[0].size == 0
+alt+9 = ‘[[[’]]|]
+’
+#(11l)‘if red:selection.len == 1 & red:selection[0].size == 0
    red:insert("‘") // ’
    return
 
 loop(sel) red:selection
-   red:replace(sel, "‘"red:text[sel]"’")
-’
+   red:replace(sel, "‘"red:text[sel]"’")’
+#‘[[[‘]]|]’
 
-alt+0 = red:insert('‘‘’’)
-’
+alt+0 = ’#(11l)‘red:insert('‘‘’’)’
 }’’’
 
 
