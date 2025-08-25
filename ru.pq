@@ -323,12 +323,11 @@ BABABABAB’
 #‘
 alt+9 = ‘[[[’]]|]
 ’
-#(11l)‘if red:selection.len == 1 & red:selection[0].size == 0
-   red:insert("‘") // ’
-   return
-
-loop(sel) red:selection
-   red:replace(sel, "‘"red:text[sel]"’")’
+#(11l)‘loop(sel) red:selection
+   if sel.size > 0
+      red:replace(sel, "‘"red:text[sel]"’")
+   else
+      red:insert(sel.start, "‘") // ’’
 #‘[[[‘]]|]’
 
 alt+0 = ’#(11l)‘red:insert('‘‘’’)’

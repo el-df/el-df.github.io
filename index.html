@@ -434,12 +434,11 @@ span.string-literal {color: #800000;}
 span.numeric-literal {color: #008000;}
 span.constant {color: #008000;}
 span.comment {color: #808080;}
-</style><pre style="display: inline"><span class="keyword">if</span> <span class="identifier">red</span>:<span class="identifier">selection</span>.<span class="identifier">len</span> == <span class="numeric-literal">1</span> &amp; <span class="identifier">red</span>:<span class="identifier">selection</span>[<span class="numeric-literal">0</span>].<span class="identifier">size</span> == <span class="numeric-literal">0</span>
-   <span class="identifier">red</span>:<span class="identifier">insert</span>(<span class="string-literal">"‘"</span>) <span class="comment">// ’</span>
-   <span class="keyword">return</span>
-
-<span class="keyword">loop</span>(<span class="identifier">sel</span>) <span class="identifier">red</span>:<span class="identifier">selection</span>
-   <span class="identifier">red</span>:<span class="identifier">replace</span>(<span class="identifier">sel</span>, <span class="string-literal">"‘"</span><span class="identifier">red</span>:<span class="identifier">text</span>[<span class="identifier">sel</span>]<span class="string-literal">"’"</span>)</pre><br />
+</style><pre style="display: inline"><span class="keyword">loop</span>(<span class="identifier">sel</span>) <span class="identifier">red</span>:<span class="identifier">selection</span>
+   <span class="keyword">if</span> <span class="identifier">sel</span>.<span class="identifier">size</span> > <span class="numeric-literal">0</span>
+      <span class="identifier">red</span>:<span class="identifier">replace</span>(<span class="identifier">sel</span>, <span class="string-literal">"‘"</span><span class="identifier">red</span>:<span class="identifier">text</span>[<span class="identifier">sel</span>]<span class="string-literal">"’"</span>)
+   <span class="keyword">else</span>
+      <span class="identifier">red</span>:<span class="identifier">insert</span>(<span class="identifier">sel</span>.<span class="identifier">start</span>, <span class="string-literal">"‘"</span>) <span class="comment">// ’</span></pre><br />
 <pre style="display: inline">’
 
 alt+0 = </pre><pre style="display: inline"><span class="identifier">red</span>:<span class="identifier">insert</span>(<span class="string-literal"><span style="opacity: 0.25">'‘</span>‘’’</span>)</pre><br />
