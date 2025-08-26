@@ -43,8 +43,7 @@ personal
 ’’’
 ‘‘#‘
 {
-    "added_words":
-    [
+    "added_words": [
         "plugin",
         "habrahabr"
     ],
@@ -57,7 +56,6 @@ added_words = [
     plugin
     habrahabr
 ]
-
 font_size = 11
 
 ’’’
