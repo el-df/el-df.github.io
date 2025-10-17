@@ -18,8 +18,8 @@ JSON:
 #‘
 {
     "deadlines": [["2025-11-15", 2], ["2025-12-31", 2], ["2026-01-23", 4]]
-[[[https://sourceforge.net/p/dropbox-export-files-revisions/code/ci/default/tree/]]|]
-    "dirs": [
+
+    "dirs": [[[[https://sourceforge.net/p/dropbox-export-files-revisions/code/ci/default/tree/]]|]
         ["", ".txt", false]
         ["Photos", ".jpg"]
         ["", ".doc", true, "Books"]
