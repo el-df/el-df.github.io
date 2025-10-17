@@ -117,6 +117,31 @@ JSON (JavaScript Object Notation) is a lightweight data<span style="color: #BFBF
 </div>
 <br />
 Цель/назначение ELDF заключается в том, чтобы почти полностью избавиться от визуального шума<!--[[[/мусора]]]--> формата JSON (такого как символы <pre class="inline_code">{</pre>, <pre class="inline_code">}</pre>, <pre class="inline_code">"</pre> и <pre class="inline_code">,</pre>).<br />
+А также в том, чтобы обеспечить лучшую поддержку встроенных типов Python и 11l <span class="cu_brackets" onclick="return spoiler(this, event)"><span class="cu_brackets_b">{</span><span>…</span><span class="cu" style="display: none"><br />
+Таких, как кортежи:<br />
+JSON:<br />
+<pre class="code_block">
+{
+    "deadlines": [["2025-11-15", 2], ["2025-12-31", 2], ["2026-01-23", 4]]
+
+    "dirs": [
+        ["", ".txt", false]
+        ["Photos", ".jpg"]
+        ["", ".doc", true, "Books"]
+    ]
+}
+</pre>
+ELDF:<br />
+<pre class="code_block">
+deadlines = [(‘2025-11-15’, 2); (‘2025-12-31’, 2); (‘2026-01-23’, 4)]
+
+dirs = [
+    (‘’, ‘.txt’, 0B)
+    (‘Photos’, ‘.jpg’)
+    (‘’, ‘.doc’, 1B, ‘Books’)
+]
+</pre>
+</span><span class="cu_brackets_b">}</span></span>.<br />
 <br />
 <br />
 Примеры:<br />

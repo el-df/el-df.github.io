@@ -12,6 +12,31 @@ Also ELDF means ELevenel[http://elevenel.org] Data Format.
 }
 
 The aim of ELDF is to almost completely get rid of all visual noise of JSON (such as `{`, `}`, `"`, and `,`).
+And to provide better support for Python and 11l native types {
+Such as tuples:
+JSON:
+#‘
+{
+    "deadlines": [["2025-11-15", 2], ["2025-12-31", 2], ["2026-01-23", 4]]
+[[[https://sourceforge.net/p/dropbox-export-files-revisions/code/ci/default/tree/]]|]
+    "dirs": [
+        ["", ".txt", false]
+        ["Photos", ".jpg"]
+        ["", ".doc", true, "Books"]
+    ]
+}
+’
+ELDF:
+#‘
+deadlines = [(‘2025-11-15’, 2); (‘2025-12-31’, 2); (‘2026-01-23’, 4)]
+
+dirs = [
+    (‘’, ‘.txt’, 0B)
+    (‘Photos’, ‘.jpg’)
+    (‘’, ‘.doc’, 1B, ‘Books’)
+]
+’
+}.
 
 
 Examples:

@@ -117,6 +117,31 @@ Also ELDF means <a href="http://elevenel.org">ELevenel</a> Data Format.<br />
 </div>
 <br />
 The aim of ELDF is to almost completely get rid of all visual noise of JSON (such as <pre class="inline_code">{</pre>, <pre class="inline_code">}</pre>, <pre class="inline_code">"</pre>, and <pre class="inline_code">,</pre>).<br />
+And to provide better support for Python and 11l native types <span class="cu_brackets" onclick="return spoiler(this, event)"><span class="cu_brackets_b">{</span><span>…</span><span class="cu" style="display: none"><br />
+Such as tuples:<br />
+JSON:<br />
+<pre class="code_block">
+{
+    "deadlines": [["2025-11-15", 2], ["2025-12-31", 2], ["2026-01-23", 4]]
+
+    "dirs": [
+        ["", ".txt", false]
+        ["Photos", ".jpg"]
+        ["", ".doc", true, "Books"]
+    ]
+}
+</pre>
+ELDF:<br />
+<pre class="code_block">
+deadlines = [(‘2025-11-15’, 2); (‘2025-12-31’, 2); (‘2026-01-23’, 4)]
+
+dirs = [
+    (‘’, ‘.txt’, 0B)
+    (‘Photos’, ‘.jpg’)
+    (‘’, ‘.doc’, 1B, ‘Books’)
+]
+</pre>
+</span><span class="cu_brackets_b">}</span></span>.<br />
 <br />
 <br />
 Examples:<br />
