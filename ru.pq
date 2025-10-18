@@ -20,8 +20,8 @@ JSON:
     "deadlines": [["2025-11-15", 2], ["2025-12-31", 2], ["2026-01-23", 4]]
 
     "dirs": [[[[https://sourceforge.net/p/dropbox-export-files-revisions/code/ci/default/tree/]]|]
-        ["", ".txt", false]
         ["Photos", ".jpg"]
+        ["", ".txt", false]
         ["", ".doc", true, "Books"]
     ]
 }
@@ -31,8 +31,8 @@ ELDF:
 deadlines = [(‘2025-11-15’, 2); (‘2025-12-31’, 2); (‘2026-01-23’, 4)]
 
 dirs = [
-    (‘’, ‘.txt’, 0B)
     (‘Photos’, ‘.jpg’)
+    (‘’, ‘.txt’, 0B)
     (‘’, ‘.doc’, 1B, ‘Books’)
 ]
 ’
