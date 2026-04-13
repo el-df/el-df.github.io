@@ -97,8 +97,12 @@ exports.to_eldf = function to_eldf(obj, indent = 4, level = 0, toplevel = true)
                     if (Object.keys(value).length > 2 && index < Object.keys(obj).length-1)
                         r += "\n";
                 }
-            else // this is value
-                r += ' = ' + to_str(value) + "\n";
+            else { // this is a value
+                if (value === '')
+                    r += " =\n";
+                else
+                    r += ' = ' + to_str(value) + "\n";
+            }
             index++;
         }
     }
